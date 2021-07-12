@@ -82,4 +82,3 @@ const start = async () => {
 }
 
 module.exports = {find, findByPk, create, update, deleteById}
-git
