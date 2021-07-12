@@ -42,3 +42,44 @@ const model = conn.define("UserModel", {
     tableName: "usuario", // configuranod o nome da tabela
     underscored: true  // estamos usando os campos no banco com underscore
 });
+
+const find = async () => {
+    return await model.findAll();
+}
+
+const create = async (user) => {
+    const userModel = await model.create(user);
+
+    return userModel
+}
+
+const findByPk = async (id) => {
+    const user = await model.findByPk(id)
+
+    return user
+}
+
+const update = async (pk, user) => {
+    const userModel = await model.findByPk(pk);
+
+    await userModel.update(user);
+}
+
+const deleteById = async (pk) => {
+    const userModel = await model.findByPk(pk);
+    await userModel.destroy()
+}
+
+// chamadas para essas funções
+
+const start = async () => {
+    // colocar chamadas de função aqui!
+
+    // testando função findall 
+
+    const allUsers = await find();
+    console.info(allUsers); 
+}
+
+module.exports = {find, findByPk, create, update, deleteById}
+git
